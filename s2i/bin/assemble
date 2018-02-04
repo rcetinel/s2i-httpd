@@ -1,16 +1,17 @@
 #!/bin/bash
 
-set -eo pipefail
+#set -eo pipefail
 
-echo "---> Copying source files"
+#echo "---> Copying source files"
 
-rm -rf /tmp/src/.git*
-rm -rf /tmp/src/.s2i*
+#rm -rf /tmp/src/.git*
+#rm -rf /tmp/src/.s2i*
 
-cp -Rf /tmp/src/. /opt/app-root/htdocs/
+#cp -Rf /tmp/src/. /opt/app-root/htdocs/
+cp -Rf /tmp/src/. ./
 
-rm -rf /tmp/src
+#rm -rf /tmp/src
 
-echo "---> Fix permissions on source files"
+#echo "---> Fix permissions on source files"
 
-chmod -Rf g+w /opt/app-root/htdocs || true
+#chmod -Rf g+w /opt/app-root/htdocs || true
