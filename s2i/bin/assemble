@@ -1,17 +1,26 @@
-#!/bin/bash
+#!/bin/bash -e
+#
+# S2I assemble script for the 'centos-centos' image.
+# The 'assemble' script builds your application source so that it is ready to run.
+#
+# For more information refer to the documentation:
+#	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#
 
-#set -eo pipefail
+# If the 'centos-centos' assemble script is executed with the '-h' flag, print the usage.
+if [[ "$1" == "-h" ]]; then
+	exec /usr/libexec/s2i/usage
+fi
 
-#echo "---> Copying source files"
+# Restore artifacts from the previous build (if they exist).
+#
+if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
+  echo "---> Restoring build artifacts..."
+  mv /tmp/artifacts/. ./
+fi
 
-#rm -rf /tmp/src/.git*
-#rm -rf /tmp/src/.s2i*
-
-#cp -Rf /tmp/src/. /opt/app-root/htdocs/
+echo "---> Installing application source..."
 cp -Rf /tmp/src/. ./
 
-#rm -rf /tmp/src
-
-#echo "---> Fix permissions on source files"
-
-#chmod -Rf g+w /opt/app-root/htdocs || true
+echo "---> Building application from source..."
+# TODO: Add build steps for your application, eg npm install, bundle install, pip install, etc.
