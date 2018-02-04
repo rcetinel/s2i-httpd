@@ -1,4 +1,5 @@
 FROM centos:centos7
+#FROM openshift/base-centos7
 
 # Install any required system packages. We need the Apache httpd web
 # server in this instance, plus the 'rsync' package so we can copy
@@ -30,15 +31,16 @@ RUN mkdir -p ${HOME} && \
 
 ENV PORT=8080
 
-RUN mkdir -p ${HOME}/htdocs && \
-    sed -ri -e 's/^Listen 80$/Listen ${PORT}/' \
+#RUN mkdir -p ${HOME}/htdocs && \
+#    sed -ri -e 's/^Listen 80$/Listen ${PORT}/' \
+RUN  sed -ri -e 's/^Listen 80$/Listen ${PORT}/' \
             -e 's%"logs/access_log"%"/proc/self/fd/1"%' \
             -e 's%"logs/error_log"%"/proc/self/fd/2"%' \
             /opt/rh/httpd24/root/etc/httpd/conf/httpd.conf && \
     echo "Include ${HOME}/httpd.conf" >> /opt/rh/httpd24/root/etc/httpd/conf/httpd.conf
 
 COPY httpd.conf ${HOME}/httpd.conf
-
+COPY htdocs/ ${HOME}/htdocs/
 #EXPOSE ${PORT}
 EXPOSE 8080
 
