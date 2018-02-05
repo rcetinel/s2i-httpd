@@ -1,5 +1,5 @@
-#FROM centos:centos7
-FROM openshift/base-centos7
+FROM centos:centos7
+#FROM openshift/base-centos7
 
 # Install any required system packages. We need the Apache httpd web
 # server in this instance, plus the 'rsync' package so we can copy
