@@ -30,3 +30,4 @@ fi
 
 echo "---> Building application from source..."
 # TODO: Add build steps for your application, eg npm install, bundle install, pip install, etc.
+
