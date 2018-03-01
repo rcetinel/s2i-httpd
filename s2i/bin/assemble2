@@ -21,12 +21,6 @@ fi
 
 echo "---> Installing application source..."
 cp -Rf /tmp/src/. ./
-touch ./hellooo
-if [ ! -d ./fakedirectory ]
-then 
-  echo "hello" ./fakedirectory_result
-
-fi
 
 echo "---> Building application from source..."
 # TODO: Add build steps for your application, eg npm install, bundle install, pip install, etc.
